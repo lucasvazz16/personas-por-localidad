@@ -59,4 +59,9 @@ public class LocalidadesRepository implements ILocalidadesRepository {
   public Boolean existeLocalidadPorId(Long id) {
     return null;
   }
+
+  @Override
+  public Boolean localidadTienePersonasVulnerables(Long id, PersonaVulnerable personaVulnerable) {
+    return null;
+  }
 }

@@ -1,6 +1,7 @@
 package ar.edu.utn.frba.dds.personas_por_localidad.services;
 
 import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.DireccionDTOIn;
+import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.LocalidadDTOIn;
 import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.PersonaVulnerableDTOIn;
 import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.UbicacionDTOIn;
 import ar.edu.utn.frba.dds.personas_por_localidad.connectors.localidades.LocalidadConnector;
@@ -33,6 +34,19 @@ public class LocalidadService {
         .collect(Collectors.toList());
   }
 
+  public List<Localidad> transformarDTO(List<UbicacionDTOIn> ubicacionesDTO) {
+    return ubicacionesDTO.stream()
+        .map(ubicacionDTO -> {
+          LocalidadDTOIn localidadDTO = ubicacionDTO.getLocalidad();
+          return new Localidad(ubicacionDTO.getNombre(),
+              localidadDTO.getCiudad(),
+              localidadDTO.getPartido(),
+              localidadDTO.getProvincia(),
+              localidadDTO.getPais());
+        })
+        .collect(Collectors.toList());
+  }
+
   public List<String> obtenerCiudades(List<UbicacionDTOIn> ubicaciones) {
     return ubicaciones.stream()
         .map(ubicacion -> ubicacion.getLocalidad().getCiudad())
@@ -41,22 +55,24 @@ public class LocalidadService {
 
 
   public void guardarLocalidades(List<Localidad> localidades) {
-
+    localidades.forEach(this::guardarLocalidad);
   }
 
   public void guardarLocalidad(Localidad localidad) {
-    if(localidadesRepository.existeLocalidad(localidad)){
+    if (localidadesRepository.existeLocalidad(localidad)) {
       localidadesRepository.modificar(localidad);
+    } else {
+
+      localidadesRepository.agregar(localidad);
     }
-    localidadesRepository.agregar(localidad);
   }
+
 
   public void agregarPersonaVulnerableQueSolicitoVianda(Long id, PersonaVulnerable personaVulnerable) {
-    Localidad localidad = localidadesRepository.obtenerPorId(id);
-    localidadesRepository.agregarPersonaVulnerableQueSolicitoVianda(id, personaVulnerable);
+    if (!localidadesRepository.localidadTienePersonasVulnerables(id, personaVulnerable)) {
+      localidadesRepository.agregarPersonaVulnerableQueSolicitoVianda(id, personaVulnerable);
+    }
   }
 
 
-
-  
 }
