@@ -3,6 +3,8 @@ package ar.edu.utn.frba.dds.personas_por_localidad.repositorios.implementaciones
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.PersonaVulnerable;
 import ar.edu.utn.frba.dds.personas_por_localidad.repositorios.interfaces.IPersonasVulnerablesRepository;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -11,6 +13,11 @@ public class PersonasVulnerablesRepository implements IPersonasVulnerablesReposi
   @Override
   public List<PersonaVulnerable> obtenerTodas() {
     return null;
+  }
+
+  @Override
+  public Optional<PersonaVulnerable> obtenerPorId(Long id) {
+    return Optional.empty();
   }
 
   @Override
@@ -29,7 +36,7 @@ public class PersonasVulnerablesRepository implements IPersonasVulnerablesReposi
   }
 
   @Override
-  public PersonaVulnerable obtenerPorDocumento(String documento) {
+  public Optional<PersonaVulnerable> obtenerPorDocumento(String documento) {
     return null;
   }
 

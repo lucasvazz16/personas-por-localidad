@@ -25,4 +25,22 @@ public class LocalidadDTOIn {
   @NonNull
   @JsonProperty(required = true, value = "country")
   private String pais;
+
+  public @NonNull String getCiudad() {
+    return ciudad;
+  }
+
+  public @NonNull String getPartido() {
+    return partido;
+  }
+
+  public @NonNull String getProvincia() {
+    return provincia;
+  }
+
+  public @NonNull String getPais() {
+    return pais;
+  }
+
+
 }
