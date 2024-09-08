@@ -5,6 +5,7 @@ import ar.edu.utn.frba.dds.personas_por_localidad.connectors.localidades.Localid
 import ar.edu.utn.frba.dds.personas_por_localidad.controllers.dtos.LocalidadDTOOut;
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.Localidad;
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.PersonaVulnerable;
+import ar.edu.utn.frba.dds.personas_por_localidad.repositorios.implementaciones.PersonasVulnerablesRepository;
 import ar.edu.utn.frba.dds.personas_por_localidad.repositorios.interfaces.ILocalidadesRepository;
 
 import java.util.ArrayList;
@@ -88,24 +89,42 @@ public class LocalidadService {
     // Lo convierto en un Map con nombre (de Localidad) como key
     // Recorro con un for el repo de Personas
     // Al Map, le agrego los nombres de las personas a c/Localidad
-    public List<LocalidadDTOOut> obtenerLocalidadesConPersonas(){
+    public List<LocalidadDTOOut> obtenerLocalidadesConPersonas() {
         List<LocalidadDTOOut> localidadesARetornar = new ArrayList<>();
+        List<PersonaVulnerable> personasVulnerables = personasVulnerablesRepository.obtenerTodas();
 
-        //
-        for (UbicacionDTOIn ubicacionDTO : ubicacionesDTO) {
-            Optional<Localidad> localidad = this.obtenerLocalidadPorNombre(ubicacionDTO.getNombre());
-            localidad.ifPresentOrElse(
+        for (personasVulnerables : personaVulnerable) {
+                agregoLocalidadPorPersona(personaVulnerable, localidadesARetornar);
+        }
+        return localidadesARetornar;
+
+    }
+
+}
+
+    private void agregoLocalidadPorPersona(PersonaVulnerable personaVulnerable, List<LocalidadDTOOut> localidadARetornar) {
+
+        for (personaVulnerable.getLocalidad() : localidad) {
+            localidad.ifPresentOrElse(//si no esta agrego la localidad
                     localidadesARetornar::add,
                     () -> {
-                        Localidad localidadNueva = MapperLocalidades.mapToLocalidad(ubicacionDTO);
+                        Localidad localidadNueva = MapperLocalidades.mapToLocalidad(localidad);
                         this.guardarLocalidad(localidadNueva);
                         localidadesARetornar.add(localidadNueva);
                     }
             );
+        List<String> nombres = localidadARetornar.getNombre(); // traigo la lista de nombres para el DTOOut
+        nombres.add(personaVulnerable.getNombre());//Agrego el nombre
         }
 
-        return localidadesARetornar;
-    }
-
-    private void agregarPersonaALocalidad(){}
 }
+
+
+
+
+//        for (personasVulnerables : ubicacionesDTO) {
+//            Optional<Localidad> localidad = this.obtenerLocalidadPorNombre(ubicacionDTO.getNombre());
+//
+//        }
+//
+//        private void agregarPersonaALocalidad(){}
