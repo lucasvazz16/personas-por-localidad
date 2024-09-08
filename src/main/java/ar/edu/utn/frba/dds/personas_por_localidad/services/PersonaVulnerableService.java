@@ -43,24 +43,24 @@ public class PersonaVulnerableService {
 
     private PersonaVulnerable transformarPersonasVulnerablesDTO(PersonaVulnerableDTOIn personaVulnerableDTO) {
         List<Localidad> localidades = localidadService.obtenerLocalidadesDondeObtuvoViandas(personaVulnerableDTO);
-        PersonaVulnerable personaVulnerableRetorno;
+        PersonaVulnerable[] personaVulnerableRetorno = new PersonaVulnerable[1];
         personasVulnerablesRepository.obtenerPorDocumento(personaVulnerableDTO.getNumeroDeDocumento())
                 .ifPresentOrElse(
                         personaVulnerable -> {
                             localidades.forEach(localidad -> verificarYAgregarLocalidad(personaVulnerable, localidad));
                             personasVulnerablesRepository.modificar(personaVulnerable);
-                            personaVulnerableRetorno = personaVulnerable;
+                            personaVulnerableRetorno[0] = personaVulnerable;
                         },
                         () -> {
                             PersonaVulnerable personaVulnerable = MapperPersonaVulnerable.mapToPersonaVulnerable(personaVulnerableDTO);
                             localidades.forEach(personaVulnerable::agregarLocalidad);
                             localidades.forEach(Localidad::incrementarCantidadDePersonas);
                             personasVulnerablesRepository.agregar(personaVulnerable);
-                            personaVulnerableRetorno = personaVulnerable;
+                            personaVulnerableRetorno[0] = personaVulnerable;
                         }
                 );
 
-        return personaVulnerableRetorno;
+        return personaVulnerableRetorno[0];
     }
 
     private void verificarYAgregarLocalidad(PersonaVulnerable personaVulnerable, Localidad localidad) {

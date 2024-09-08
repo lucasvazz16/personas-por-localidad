@@ -1,10 +1,8 @@
 package ar.edu.utn.frba.dds.personas_por_localidad.services;
 
-import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.DireccionDTOIn;
-import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.LocalidadDTOIn;
-import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.PersonaVulnerableDTOIn;
-import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.UbicacionDTOIn;
+import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.*;
 import ar.edu.utn.frba.dds.personas_por_localidad.connectors.localidades.LocalidadConnector;
+import ar.edu.utn.frba.dds.personas_por_localidad.controllers.dtos.LocalidadDTOOut;
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.Localidad;
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.PersonaVulnerable;
 import ar.edu.utn.frba.dds.personas_por_localidad.repositorios.interfaces.ILocalidadesRepository;
@@ -15,6 +13,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import ar.edu.utn.frba.dds.personas_por_localidad.repositorios.interfaces.IPersonasVulnerablesRepository;
 import ar.edu.utn.frba.dds.personas_por_localidad.utils.MapperLocalidades;
 import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +24,13 @@ public class LocalidadService {
 
     private LocalidadConnector localidadConnector;
     private ILocalidadesRepository localidadesRepository;
+    private IPersonasVulnerablesRepository personasVulnerablesRepository;
 
     @Autowired
-    public LocalidadService(LocalidadConnector localidadConnector, ILocalidadesRepository localidadesRepository) {
+    public LocalidadService(LocalidadConnector localidadConnector, ILocalidadesRepository localidadesRepository, IPersonasVulnerablesRepository personasVulnerablesRepository) {
         this.localidadConnector = localidadConnector;
         this.localidadesRepository = localidadesRepository;
+        this.personasVulnerablesRepository = personasVulnerablesRepository;
     }
 
     public List<Localidad> obtenerLocalidadesDondeObtuvoViandas(PersonaVulnerableDTOIn personaVulnerableDTO) {
@@ -83,5 +84,28 @@ public class LocalidadService {
         return localidadesRepository.obtenerPorId(id);
     }
 
+    // Recibo un List<PersonaVulnerable>, c/PersonaVulnerable con un List<Localidad>
+    // Lo convierto en un Map con nombre (de Localidad) como key
+    // Recorro con un for el repo de Personas
+    // Al Map, le agrego los nombres de las personas a c/Localidad
+    public List<LocalidadDTOOut> obtenerLocalidadesConPersonas(){
+        List<LocalidadDTOOut> localidadesARetornar = new ArrayList<>();
 
+        //
+        for (UbicacionDTOIn ubicacionDTO : ubicacionesDTO) {
+            Optional<Localidad> localidad = this.obtenerLocalidadPorNombre(ubicacionDTO.getNombre());
+            localidad.ifPresentOrElse(
+                    localidadesARetornar::add,
+                    () -> {
+                        Localidad localidadNueva = MapperLocalidades.mapToLocalidad(ubicacionDTO);
+                        this.guardarLocalidad(localidadNueva);
+                        localidadesARetornar.add(localidadNueva);
+                    }
+            );
+        }
+
+        return localidadesARetornar;
+    }
+
+    private void agregarPersonaALocalidad(){}
 }
