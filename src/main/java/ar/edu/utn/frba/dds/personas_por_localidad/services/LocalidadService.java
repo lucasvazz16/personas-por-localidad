@@ -93,7 +93,7 @@ public class LocalidadService {
         List<LocalidadDTOOut> localidadesARetornar = new ArrayList<>();
         List<PersonaVulnerable> personasVulnerables = personasVulnerablesRepository.obtenerTodas();
 
-        for (personasVulnerables : personaVulnerable) {
+        for (PersonaVulnerable personaVulnerable : personasVulnerables) {
                 agregoLocalidadPorPersona(personaVulnerable, localidadesARetornar);
         }
         return localidadesARetornar;
