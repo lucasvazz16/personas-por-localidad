@@ -1,17 +1,12 @@
 package ar.edu.utn.frba.dds.personas_por_localidad.services;
 
-import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.UbicacionDTOIn;
-import ar.edu.utn.frba.dds.personas_por_localidad.connectors.localidades.LocalidadConnector;
 import ar.edu.utn.frba.dds.personas_por_localidad.connectors.personaVulnerable.PersonaVulnerableConnector;
-import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.DireccionDTOIn;
 import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.PersonaVulnerableDTOIn;
-import ar.edu.utn.frba.dds.personas_por_localidad.domain.Direccion;
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.Localidad;
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.PersonaVulnerable;
 import ar.edu.utn.frba.dds.personas_por_localidad.repositorios.interfaces.IPersonasVulnerablesRepository;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import ar.edu.utn.frba.dds.personas_por_localidad.utils.MapperPersonaVulnerable;
@@ -44,18 +39,18 @@ public class PersonaVulnerableService {
     private PersonaVulnerable transformarPersonasVulnerablesDTO(PersonaVulnerableDTOIn personaVulnerableDTO) {
         List<Localidad> localidades = localidadService.obtenerLocalidadesDondeObtuvoViandas(personaVulnerableDTO);
         PersonaVulnerable[] personaVulnerableRetorno = new PersonaVulnerable[1];
-        personasVulnerablesRepository.obtenerPorDocumento(personaVulnerableDTO.getNumeroDeDocumento())
+        personasVulnerablesRepository.findById(personaVulnerableDTO.getNumeroDeDocumento())
                 .ifPresentOrElse(
                         personaVulnerable -> {
                             localidades.forEach(localidad -> verificarYAgregarLocalidad(personaVulnerable, localidad));
-                            personasVulnerablesRepository.modificar(personaVulnerable);
+                            personasVulnerablesRepository.save(personaVulnerable);
                             personaVulnerableRetorno[0] = personaVulnerable;
                         },
                         () -> {
                             PersonaVulnerable personaVulnerable = MapperPersonaVulnerable.mapToPersonaVulnerable(personaVulnerableDTO);
                             localidades.forEach(personaVulnerable::agregarLocalidad);
                             localidades.forEach(Localidad::incrementarCantidadDePersonas);
-                            personasVulnerablesRepository.agregar(personaVulnerable);
+                            personasVulnerablesRepository.save(personaVulnerable);
                             personaVulnerableRetorno[0] = personaVulnerable;
                         }
                 );
