@@ -1,6 +1,7 @@
 package ar.edu.utn.frba.dds.personas_por_localidad.controllers;
 
 import ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos.PersonaVulnerableDTOIn;
+import ar.edu.utn.frba.dds.personas_por_localidad.controllers.dtos.LocalidadDTOOut;
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.Localidad;
 import ar.edu.utn.frba.dds.personas_por_localidad.services.LocalidadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,31 +23,10 @@ public class LocalidadController {
         this.localidadService = localidadService;
     }
 
-    // Endpoint para obtener todas las localidades
-    @GetMapping
-    public ResponseEntity<List<Localidad>> obtenerTodasLasLocalidades() {
-        List<Localidad> localidades = localidadService.obtenerLocalidades();
-        return ResponseEntity.ok(localidades);
-    }
 
-    // Endpoint para obtener una localidad por su nombre
-    @GetMapping("/nombre/{nombre}")
-    public ResponseEntity<Localidad> obtenerLocalidadPorNombre(@PathVariable String nombre) {
-        Optional<Localidad> localidad = localidadService.obtenerLocalidadPorNombre(nombre);
-        return localidad.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    // Endpoint para obtener una localidad por su ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Localidad> obtenerLocalidadPorId(@PathVariable Long id) {
-        Optional<Localidad> localidad = localidadService.obtenerLocalidadPorId(id);
-        return localidad.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    // Endpoint para obtener localidades basadas en un PersonaVulnerableDTOIn
     @GetMapping("/obtenerLocalidades")
-    public ResponseEntity<List<Localidad>> obtenerLocalidadesDondeObtuvoViandas(@RequestBody PersonaVulnerableDTOIn personaVulnerableDTO) {
-        List<Localidad> localidades = localidadService.obtenerLocalidadesDondeObtuvoViandas(personaVulnerableDTO);
+    public ResponseEntity<List<LocalidadDTOOut>> obtenerLocalidadesDondeObtuvoViandas() {
+        List<LocalidadDTOOut> localidades = localidadService.obtenerLocalidadesConPersonas();
         return ResponseEntity.ok(localidades);
     }
 }

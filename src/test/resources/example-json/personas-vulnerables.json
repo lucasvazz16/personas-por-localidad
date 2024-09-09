@@ -1,0 +1,74 @@
+[
+  {
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "direccion": {
+      "latitud": -34.603722,
+      "longitud": -58.381592
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "12345678",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 1,
+        "nombre": "Localidad1",
+        "ciudad": "Ciudad1",
+        "partido": "Partido1",
+        "provincia": "Provincia1",
+        "pais": "Pais1",
+        "cantidadDePersonas": 2
+      },
+      {
+        "id": 2,
+        "nombre": "Localidad2",
+        "ciudad": "Ciudad2",
+        "partido": "Partido2",
+        "provincia": "Provincia2",
+        "pais": "Pais2",
+        "cantidadDePersonas": 1
+      }
+    ]
+  },
+  {
+    "nombre": "Maria",
+    "apellido": "Gomez",
+    "direccion": {
+      "latitud": -34.603722,
+      "longitud": -58.381592
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "87654321",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 1,
+        "nombre": "Localidad1",
+        "ciudad": "Ciudad1",
+        "partido": "Partido1",
+        "provincia": "Provincia1",
+        "pais": "Pais1",
+        "cantidadDePersonas": 2
+      }
+    ]
+  },
+  {
+    "nombre": "Carlos",
+    "apellido": "Lopez",
+    "direccion": {
+      "latitud": -34.603722,
+      "longitud": -58.381592
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "11223344",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 3,
+        "nombre": "Localidad3",
+        "ciudad": "Ciudad3",
+        "partido": "Partido3",
+        "provincia": "Provincia3",
+        "pais": "Pais3",
+        "cantidadDePersonas": 1
+      }
+    ]
+  }
+]
