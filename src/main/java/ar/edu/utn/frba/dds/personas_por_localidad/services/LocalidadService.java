@@ -86,7 +86,7 @@ public class LocalidadService {
   }
 
   // Recibo un List<PersonaVulnerable>, c/PersonaVulnerable con un List<Localidad>
-  // Lo convierto en un Map con nombre (de Localidad) como key
+  // Lo convierto en un Map con Localidad como key
   // Recorro con un for el repo de Personas
   // Al Map, le agrego los nombres de las personas a c/Localidad
   public List<LocalidadDTOOut> obtenerLocalidadesConPersonas() {
@@ -124,10 +124,3 @@ public class LocalidadService {
   }
 }
 
-
-//        for (personasVulnerables : ubicacionesDTO) {
-//            Optional<Localidad> localidad = this.obtenerLocalidadPorNombre(ubicacionDTO.getNombre());
-//
-//        }
-//
-//        private void agregarPersonaALocalidad(){}

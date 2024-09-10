@@ -103,7 +103,6 @@ public class LocalidadServiceTest {
 
     when(personasVulnerablesRepository.findAll()).thenReturn(personasVulnerables);
     List<LocalidadDTOOut> result = localidadService.obtenerLocalidadesConPersonas();
-
     assertEquals(localidades, result);
   }
 }
