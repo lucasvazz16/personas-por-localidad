@@ -1,0 +1,118 @@
+[
+  {
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "direccion": {
+      "latitud": -34.603722,
+      "longitud": -58.381592
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "12345678",
+    "menoresACargo": [
+      {
+        "nombre": "Lucía",
+        "apellido": "Pérez",
+        "direccion": {
+          "latitud": -34.603722,
+          "longitud": -58.381592
+        },
+        "tipoDocumento": "DNI",
+        "numeroDeDocumento": "87654321",
+        "menoresACargo": [],
+        "tarjeta": null
+      }
+    ],
+    "tarjeta": {
+      "id": "4321-8765-6789-1234",
+      "historialDeUso": [
+        {
+          "heladera": {
+            "puntoHeladera": {
+              "direccion": {
+                "latitud": -34.603752,
+                "longitud": -58.381692
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nombre": "Ana",
+    "apellido": "González",
+    "direccion": {
+      "latitud": -34.615852,
+      "longitud": -58.433298
+    },
+    "tipoDocumento": "PASAPORTE",
+    "numeroDeDocumento": "A12345678",
+    "menoresACargo": [],
+    "tarjeta": {
+      "id": "5678-4321-1234-8765",
+      "historialDeUso": [
+        {
+          "heladera": {
+            "puntoHeladera": {
+              "direccion": {
+                "latitud": -34.616822,
+                "longitud": -58.434298
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "nombre": "Pepe",
+    "apellido": "Gonzalez",
+    "direccion": {
+      "latitud": -34.215852,
+      "longitud": -58.233298
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "12341678",
+    "menoresACargo": [
+      {
+        "nombre": "Juan",
+        "apellido": "Gonzalez",
+        "direccion": {
+          "latitud": -34.215852,
+          "longitud": -58.233298
+        },
+        "tipoDocumento": "DNI",
+        "numeroDeDocumento": "87614321",
+        "menoresACargo": [],
+        "tarjeta": null
+      },
+      {
+        "nombre": "Juana",
+        "apellido": "Gonzalez",
+        "direccion": {
+          "latitud": -34.215852,
+          "longitud": -58.233298
+        },
+        "tipoDocumento": "DNI",
+        "numeroDeDocumento": "89654321",
+        "menoresACargo": [],
+        "tarjeta": null
+      }
+    ],
+    "tarjeta": {
+      "id": "5678-4321-1234-8765",
+      "historialDeUso": [
+        {
+          "heladera": {
+            "puntoHeladera": {
+              "direccion": {
+                "latitud": -34.616822,
+                "longitud": -58.434298
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+]

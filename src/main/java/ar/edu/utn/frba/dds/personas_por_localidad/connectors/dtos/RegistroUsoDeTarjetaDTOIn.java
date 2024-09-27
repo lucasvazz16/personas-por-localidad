@@ -12,7 +12,7 @@ import lombok.NonNull;
 
 public class RegistroUsoDeTarjetaDTOIn {
 
-  @NonNull
+
   @JsonProperty(required = true)
   private HeladeraDTOIn heladera;
 

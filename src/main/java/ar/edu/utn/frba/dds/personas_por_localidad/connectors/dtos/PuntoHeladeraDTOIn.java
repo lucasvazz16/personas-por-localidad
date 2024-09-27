@@ -11,7 +11,6 @@ import lombok.NonNull;
 @Getter
 public class PuntoHeladeraDTOIn {
 
-  @NonNull
   @JsonProperty(required = true)
   private DireccionDTOIn direccion;
 

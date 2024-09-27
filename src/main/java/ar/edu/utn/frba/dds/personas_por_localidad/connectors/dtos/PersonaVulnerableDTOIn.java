@@ -16,10 +16,9 @@ import lombok.NonNull;
 @JsonAutoDetect
 public class PersonaVulnerableDTOIn {
 
-  @NonNull
   @JsonProperty(required = true)
   private String nombre;
-  @NonNull
+
   @JsonProperty(required = true)
   private String apellido;
 

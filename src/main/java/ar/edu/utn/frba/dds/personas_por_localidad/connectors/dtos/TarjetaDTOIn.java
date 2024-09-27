@@ -14,10 +14,10 @@ import lombok.NonNull;
 @Getter
 public class TarjetaDTOIn {
 
-  @NonNull
+
   @JsonProperty(required = true)
   private String id;
-  @NonNull
+
   @JsonProperty(required = true)
   private List<RegistroUsoDeTarjetaDTOIn> historialDeUso;
 

@@ -34,8 +34,7 @@ public class LocalidadService {
     this.personasVulnerablesRepository = personasVulnerablesRepository;
   }
 
-  public List<Localidad> obtenerLocalidadesDondeObtuvoViandas(PersonaVulnerableDTOIn personaVulnerableDTO) {
-    Set<DireccionDTOIn> direccionesDTO = personaVulnerableDTO.obtenerDireccionesDondeUsoTarjeta();
+  public List<Localidad> obtenerLocalidadesDondeObtuvoViandas(PersonaVulnerableDTOIn personaVulnerableDTO, Set<DireccionDTOIn> direccionesDTO) {
     List<UbicacionDTOIn> ubicacionDTOIns = direccionesDTO.stream()
         .map(direccionDTO ->
             localidadConnector.getLocalidad(direccionDTO.getLatitud(), direccionDTO.getLongitud()))

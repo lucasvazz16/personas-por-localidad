@@ -49,4 +49,8 @@ public class Localidad {
     this.cantidadDePersonasVulnerablesQueSolicitaronVianda++;
   }
 
+  public void incrementarCantidadDePersonas(Integer cant){
+    this.cantidadDePersonasVulnerablesQueSolicitaronVianda += cant;
+  }
+
 }
