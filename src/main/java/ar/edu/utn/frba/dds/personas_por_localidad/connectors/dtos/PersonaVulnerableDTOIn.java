@@ -1,6 +1,7 @@
 package ar.edu.utn.frba.dds.personas_por_localidad.connectors.dtos;
 
 import ar.edu.utn.frba.dds.personas_por_localidad.domain.TipoDocumento;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,7 @@ import lombok.NonNull;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonAutoDetect
 public class PersonaVulnerableDTOIn {
 
   @NonNull

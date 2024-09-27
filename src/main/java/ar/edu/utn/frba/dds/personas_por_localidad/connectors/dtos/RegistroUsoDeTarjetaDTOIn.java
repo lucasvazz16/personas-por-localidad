@@ -9,6 +9,7 @@ import lombok.NonNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+
 public class RegistroUsoDeTarjetaDTOIn {
 
   @NonNull

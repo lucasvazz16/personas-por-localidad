@@ -15,6 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/localidades")
 public class LocalidadController {
+
     @Autowired
     private LocalidadService localidadService;
 
@@ -22,7 +23,6 @@ public class LocalidadController {
     public LocalidadController(LocalidadService localidadService) {
         this.localidadService = localidadService;
     }
-
 
     @GetMapping("/obtenerLocalidades")
     public ResponseEntity<List<LocalidadDTOOut>> obtenerLocalidadesDondeObtuvoViandas() {
