@@ -45,4 +45,16 @@ public class LocalidadDTOOut {
     this.cantidadDePersonas = nombresDePersonasVulnerables.size();
   }
 
+  @Override
+  public String toString() {
+    return "LocalidadDTOOut{" +
+            "nombre='" + nombre + '\'' +
+            ", ciudad='" + ciudad + '\'' +
+            ", partido='" + partido + '\'' +
+            ", provincia='" + provincia + '\'' +
+            ", pais='" + pais + '\'' +
+            ", cantidadDePersonas=" + cantidadDePersonas +
+            ", nombresDePersonasVulnerables=" + nombresDePersonasVulnerables +
+            '}';
+  }
 }

@@ -1,6 +1,5 @@
 package cron;
 
-import ar.edu.utn.frba.dds.personas_por_localidad.connectors.personaVulnerable.PersonaVulnerableConnector;
 import ar.edu.utn.frba.dds.personas_por_localidad.services.PersonaVulnerableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,7 +18,7 @@ public class Refresh {
   @Scheduled(cron = "0 0 0 * * *")
   public void ejecutarRefresh() {
     System.out.println("Ejecutando refresh");
-    personaVulnerableService.obtenerPersonasVulnerablesDeServicio();
+    personaVulnerableService.actualizarPersonasVulnerablesDeServicio();
   }
 
 }

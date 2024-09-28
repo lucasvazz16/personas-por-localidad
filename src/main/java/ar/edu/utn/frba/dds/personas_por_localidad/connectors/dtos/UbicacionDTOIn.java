@@ -6,15 +6,13 @@ import lombok.Getter;
 import lombok.NonNull;
 
 @AllArgsConstructor
-@NonNull
 @Getter
 public class UbicacionDTOIn {
 
-  @NonNull
+
   @JsonProperty(required = true, value = "display_name")
   private String nombre;
 
-  @NonNull
   @JsonProperty(required = true, value = "address")
   private LocalidadDTOIn localidad;
 }

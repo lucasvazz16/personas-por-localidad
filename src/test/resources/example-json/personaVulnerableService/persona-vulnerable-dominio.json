@@ -1,0 +1,128 @@
+[
+  {
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "direccion": {
+      "latitud": -34.603722,
+      "longitud": -58.381592
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "12345678",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 1,
+        "nombre": "Remedios de Escalada, Lanús Oeste, Buenos Aires",
+        "ciudad": "Lanús",
+        "partido": "Lanús",
+        "provincia": "Buenos Aires",
+        "pais": "Argentina",
+        "cantidadDePersonasVulnerablesQueSolicitaronVianda": 2
+      }
+    ]
+  },
+  {
+    "nombre": "Lucía",
+    "apellido": "Pérez",
+    "direccion": {
+      "latitud": -34.603722,
+      "longitud": -58.381592
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "87654321",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 1,
+        "nombre": "Remedios de Escalada, Lanús Oeste, Buenos Aires",
+        "ciudad": "Lanús",
+        "partido": "Lanús",
+        "provincia": "Buenos Aires",
+        "pais": "Argentina",
+        "cantidadDePersonasVulnerablesQueSolicitaronVianda": 2
+      }
+    ]
+  },
+  {
+    "nombre": "Ana",
+    "apellido": "González",
+    "direccion": {
+      "latitud": -34.615852,
+      "longitud": -58.433298
+    },
+    "tipoDocumento": "PASAPORTE",
+    "numeroDeDocumento": "A12345678",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 2,
+        "nombre": "Almagro, Ciudad Autónoma de Buenos Aires",
+        "ciudad": "Almagro",
+        "partido": "Comuna 5",
+        "provincia": "Ciudad Autónoma de Buenos Aires",
+        "pais": "Argentina",
+        "cantidadDePersonasVulnerablesQueSolicitaronVianda": 4
+      }
+    ]
+  },
+  {
+    "nombre": "Pepe",
+    "apellido": "Gonzalez",
+    "direccion": {
+      "latitud": -34.215852,
+      "longitud": -58.233298
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "12341678",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 2,
+        "nombre": "Almagro, Ciudad Autónoma de Buenos Aires",
+        "ciudad": "Almagro",
+        "partido": "Comuna 5",
+        "provincia": "Ciudad Autónoma de Buenos Aires",
+        "pais": "Argentina",
+        "cantidadDePersonasVulnerablesQueSolicitaronVianda": 4
+      }
+    ]
+  },
+  {
+    "nombre": "Juan",
+    "apellido": "Gonzalez",
+    "direccion": {
+      "latitud": -34.215852,
+      "longitud": -58.233298
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "87614321",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 2,
+        "nombre": "Almagro, Ciudad Autónoma de Buenos Aires",
+        "ciudad": "Almagro",
+        "partido": "Comuna 5",
+        "provincia": "Ciudad Autónoma de Buenos Aires",
+        "pais": "Argentina",
+        "cantidadDePersonasVulnerablesQueSolicitaronVianda": 4
+      }
+    ]
+  },
+  {
+    "nombre": "Juana",
+    "apellido": "Gonzalez",
+    "direccion": {
+      "latitud": -34.215852,
+      "longitud": -58.233298
+    },
+    "tipoDocumento": "DNI",
+    "numeroDeDocumento": "89654321",
+    "localidadesDondeObtuvoViandas": [
+      {
+        "id": 2,
+        "nombre": "Almagro, Ciudad Autónoma de Buenos Aires",
+        "ciudad": "Almagro",
+        "partido": "Comuna 5",
+        "provincia": "Ciudad Autónoma de Buenos Aires",
+        "pais": "Argentina",
+        "cantidadDePersonasVulnerablesQueSolicitaronVianda": 4
+      }
+    ]
+  }
+]

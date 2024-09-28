@@ -8,8 +8,8 @@ import ar.edu.utn.frba.dds.personas_por_localidad.domain.PersonaVulnerable;
 import ar.edu.utn.frba.dds.personas_por_localidad.repositorios.interfaces.IPersonasVulnerablesRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import ar.edu.utn.frba.dds.personas_por_localidad.utils.MapperPersonaVulnerable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +25,13 @@ public class PersonaVulnerableService {
   @Autowired
   public PersonaVulnerableService(PersonaVulnerableConnector personaVulnerableConnector,
                                   LocalidadService localidadService,
-                                  IPersonasVulnerablesRepository personasVulnerablesRepository) {
+                                  @Autowired IPersonasVulnerablesRepository personasVulnerablesRepository) {
     this.personaVulnerableConnector = personaVulnerableConnector;
     this.localidadService = localidadService;
     this.personasVulnerablesRepository = personasVulnerablesRepository;
   }
 
-  public void obtenerPersonasVulnerablesDeServicio() {
+  public void actualizarPersonasVulnerablesDeServicio() {
     List<PersonaVulnerableDTOIn> personasVulnerablesDTO = personaVulnerableConnector.getPersonasVulnerables();
     personasVulnerablesDTO.forEach(this::transformarPersonaVulnerableEHijos);
   }
@@ -69,6 +69,10 @@ public class PersonaVulnerableService {
       personaVulnerable.agregarLocalidad(localidad);
       localidad.incrementarCantidadDePersonas();
     }
+  }
+
+  public List<PersonaVulnerable> buscarPersonasVulnerables(){
+    return personasVulnerablesRepository.findAll();
   }
 
 

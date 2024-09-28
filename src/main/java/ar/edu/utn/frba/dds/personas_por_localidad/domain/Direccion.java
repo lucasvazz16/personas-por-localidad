@@ -12,6 +12,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -20,11 +22,20 @@ import lombok.NoArgsConstructor;
 public class Direccion {
 
 
-  @Column(columnDefinition = "DECIMAL(10,6)")
-  private Double latitud;
-  @Column(columnDefinition = "DECIMAL(10,6)")
-  private Double longitud;
+    @Column(columnDefinition = "DECIMAL(10,10)")
+    private Double latitud;
+    @Column(columnDefinition = "DECIMAL(10,10)")
+    private Double longitud;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Direccion direccion)) return false;
+        return Objects.equals(latitud, direccion.latitud) && Objects.equals(longitud, direccion.longitud);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(latitud, longitud);
+    }
 }

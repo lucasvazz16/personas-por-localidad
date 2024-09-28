@@ -21,9 +21,6 @@ import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -50,7 +47,7 @@ public class LocalidadServiceTest {
 
   @BeforeEach
   public void setUp() throws IOException {
-    personasVulnerables =  objectMapper.readValue(new ClassPathResource("example-json/personas-vulnerables.json").getFile(), new TypeReference<List<PersonaVulnerable>>() {});
+    personasVulnerables =  objectMapper.readValue(new ClassPathResource("example-json/localidadService/personas-vulnerables.json").getFile(), new TypeReference<List<PersonaVulnerable>>() {});
   }
 
   @Test
