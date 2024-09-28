@@ -61,15 +61,4 @@ public class PersonaVulnerable {
         return localidadesDondeObtuvoViandas.contains(localidad);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PersonaVulnerable that)) return false;
-        return Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(direccion, that.direccion) && tipoDocumento == that.tipoDocumento && Objects.equals(numeroDeDocumento, that.numeroDeDocumento) && Objects.equals(localidadesDondeObtuvoViandas, that.localidadesDondeObtuvoViandas);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nombre, apellido, direccion, tipoDocumento, numeroDeDocumento, localidadesDondeObtuvoViandas);
-    }
 }
