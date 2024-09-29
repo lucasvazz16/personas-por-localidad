@@ -8,7 +8,6 @@ import ar.edu.utn.frba.dds.personas_por_localidad.domain.PersonaVulnerable;
 import ar.edu.utn.frba.dds.personas_por_localidad.repositorios.interfaces.IPersonasVulnerablesRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import ar.edu.utn.frba.dds.personas_por_localidad.utils.MapperPersonaVulnerable;
@@ -52,12 +51,12 @@ public class PersonaVulnerableService {
             personaVulnerable -> {
               localidades.forEach(localidad -> verificarYAgregarLocalidad(personaVulnerable, localidad));
               personasVulnerablesRepository.save(personaVulnerable);
-
             },
             () -> {
               PersonaVulnerable personaVulnerable = MapperPersonaVulnerable.mapToPersonaVulnerable(personaVulnerableDTO);
               localidades.forEach(personaVulnerable::agregarLocalidad);
               localidades.forEach(Localidad::incrementarCantidadDePersonas);
+              localidades.forEach(localidadService::actualizarLocalidad);
               personasVulnerablesRepository.save(personaVulnerable);
             }
         );
@@ -68,12 +67,15 @@ public class PersonaVulnerableService {
     if (!personaVulnerable.personaTieneLocalidad(localidad)) {
       personaVulnerable.agregarLocalidad(localidad);
       localidad.incrementarCantidadDePersonas();
+      localidadService.actualizarLocalidad(localidad);
     }
   }
+
 
   public List<PersonaVulnerable> buscarPersonasVulnerables(){
     return personasVulnerablesRepository.findAll();
   }
+
 
 
 }

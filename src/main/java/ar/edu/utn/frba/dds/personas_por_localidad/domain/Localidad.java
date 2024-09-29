@@ -18,6 +18,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "localidades")
 public class Localidad {
@@ -55,15 +56,4 @@ public class Localidad {
         this.cantidadDePersonasVulnerablesQueSolicitaronVianda += cant;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Localidad localidad)) return false;
-        return Objects.equals(id, localidad.id) && Objects.equals(nombre, localidad.nombre) && Objects.equals(ciudad, localidad.ciudad) && Objects.equals(partido, localidad.partido) && Objects.equals(provincia, localidad.provincia) && Objects.equals(pais, localidad.pais) && Objects.equals(cantidadDePersonasVulnerablesQueSolicitaronVianda, localidad.cantidadDePersonasVulnerablesQueSolicitaronVianda);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nombre, ciudad, partido, provincia, pais, cantidadDePersonasVulnerablesQueSolicitaronVianda);
-    }
 }

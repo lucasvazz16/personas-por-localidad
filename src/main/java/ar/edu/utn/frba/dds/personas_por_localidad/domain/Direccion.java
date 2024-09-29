@@ -22,9 +22,9 @@ import java.util.Objects;
 public class Direccion {
 
 
-    @Column(columnDefinition = "DECIMAL(10,9)")
+    @Column(columnDefinition = "DECIMAL(18,10)")
     private Double latitud;
-    @Column(columnDefinition = "DECIMAL(10,9)")
+    @Column(columnDefinition = "DECIMAL(18,10)")
     private Double longitud;
 
 }

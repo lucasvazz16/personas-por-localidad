@@ -72,16 +72,8 @@ public class LocalidadService {
     }
   }
 
-  public List<Localidad> obtenerLocalidades() {
-    return localidadesRepository.findAll();
-  }
-
   public Optional<Localidad> obtenerLocalidadPorNombre(String nombre) {
     return localidadesRepository.findByNombre(nombre);
-  }
-
-  public Optional<Localidad> obtenerLocalidadPorId(Long id) {
-    return localidadesRepository.findById(id);
   }
 
   // Recibo un List<PersonaVulnerable>, c/PersonaVulnerable con un List<Localidad>
@@ -120,6 +112,10 @@ public class LocalidadService {
           dto.calcularCantidadDePersonas();
           return dto;
         }).collect(Collectors.toList());
+  }
+
+  public void actualizarLocalidad(Localidad localidad) {
+    localidadesRepository.save(localidad);
   }
 }
 

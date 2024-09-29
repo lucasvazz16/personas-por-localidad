@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("test") //todo quitar esta linea para probar la conexion con la base de datos mysql
 public class DataBaseConnectionTest {
   @Autowired
   private IPersonasVulnerablesRepository repository;

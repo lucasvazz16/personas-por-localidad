@@ -10,10 +10,13 @@ import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -26,12 +29,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
+@ToString
 @JsonAutoDetect
 @Entity
 @Table(name = "personas_vulnerables")
@@ -44,13 +49,17 @@ public class PersonaVulnerable {
     @Embedded
     private Direccion direccion;
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(10)")
+    @Column(columnDefinition = "VARCHAR(20)")
     private TipoDocumento tipoDocumento;
     @Id
     @Column(columnDefinition = "VARCHAR(50)")
     private String numeroDeDocumento;
-    @OneToMany
-    @JoinColumn(name = "persona_vulnerable_id", referencedColumnName = "numeroDeDocumento")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "personas_vulnerables_localidades",
+            joinColumns = @JoinColumn(name = "persona_vulnerable_id", referencedColumnName = "numeroDeDocumento"),
+            inverseJoinColumns = @JoinColumn(name = "localidad_id", referencedColumnName = "id")
+    )
     private List<Localidad> localidadesDondeObtuvoViandas;
 
     public void agregarLocalidad(Localidad localidad) {
@@ -61,4 +70,8 @@ public class PersonaVulnerable {
         return localidadesDondeObtuvoViandas.contains(localidad);
     }
 
+
+    public int compareTo(PersonaVulnerable other) {
+        return this.numeroDeDocumento.compareTo(other.numeroDeDocumento);
+    }
 }
