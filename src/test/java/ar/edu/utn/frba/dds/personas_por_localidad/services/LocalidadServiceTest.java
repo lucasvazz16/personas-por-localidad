@@ -97,8 +97,8 @@ public class LocalidadServiceTest {
         "Provincia3", "Pais3", 1, List.of("Carlos"));
     List<LocalidadDTOOut> localidades = new ArrayList<>();
     localidades.add(localidadDTOOut3);
-    localidades.add(localidadDTOOut);
     localidades.add(localidadDTOOut2);
+    localidades.add(localidadDTOOut);
 
     when(personasVulnerablesRepository.findAll()).thenReturn(personasVulnerables);
     List<LocalidadDTOOut> result = localidadService.obtenerLocalidadesConPersonas();
